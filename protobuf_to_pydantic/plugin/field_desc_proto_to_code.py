@@ -105,6 +105,8 @@ class FileDescriptorProtoToCode(BaseP2C):
         for _index in range(min(len(fd_path_list), len(message_path_list))):
             if message_path_list[_index] == fd_path_list[_index]:
                 index = _index
+            else:
+                break
         # common/a/name.proto includes common/b/include.proto
         # The basic name: include_p2p
         module_name: str = message_path_list[-1].replace(".proto", "") + self.config.file_name_suffix
